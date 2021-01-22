@@ -43,4 +43,4 @@ proc xdgDataDir*(): string =
   if getEnv("XDG_DATA_HOME") != "":
     dir = getEnv("XDG_DATA_HOME")
 
-  return joinPath(dir, "bash-installer")
+  return joinPath(dir, "shell-installer")
