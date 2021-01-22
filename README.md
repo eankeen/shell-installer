@@ -13,7 +13,7 @@ git clone https://github.com/eankeen/bash-installer
 cd bash-installer
 nimble install
 
-bash_installer add eankeen/bm
+shell_installer add eankeen/bm
 ```
 
 Setup shell things

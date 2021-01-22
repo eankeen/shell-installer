@@ -2,14 +2,7 @@
 
 # based on https://tylerthrailkill.com/2019-01-19/writing-bash-completion-script-with-subcommands/
 
-_log() {
-	local -r file=".salamis-debug"
-	[[ -v DEBUG ]] && {
-		"$@" >> "$file"
-	} 1>&2 2>/dev/null
-}
-
-_bash_installer_remove() {
+_shell_installer_remove() {
 	local cur="${COMP_WORDS[COMP_CWORD]}"
 
 	local -a dirs
@@ -22,21 +15,11 @@ _bash_installer_remove() {
 	COMPREPLY=($(compgen -W "${dirs[*]}" -- "$cur"))
 }
 
-_bash_installer_update() {
-	_bash_installer_remove
+_shell_installer_update() {
+	_shell_installer_remove
 }
 
-_salamis_launch() {
-	local cur="${COMP_WORDS[COMP_CWORD]}"
-	local dirs
-
-	# TODO
-	dirs="$(\ls --color=never -c1 ~/.cache/salamis/workspaces)"
-	# shellcheck disable=SC2207
-	COMPREPLY=($(compgen -W "one two three" -- "$cur"))
-}
-
-_bash_installer() {
+_shell_installer() {
 	local i=1 cmd
 
 	# iterate over COMP_WORDS (ending at currently completed word)
@@ -70,13 +53,13 @@ _bash_installer() {
 		add)
 			COMPREPLY=() ;;
 		remove)
-			_bash_installer_remove ;;
+			_shell_installer_remove ;;
 		update)
-			_bash_installer_update ;;
+			_shell_installer_update ;;
 		reshim)
 			COMPREPLY=() ;;
 		*)
 			;;
 	esac
 
-} && complete -F _bash_installer bash_installer
+} && complete -F _shell_installer shell_installer
