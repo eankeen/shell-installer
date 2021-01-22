@@ -5,14 +5,14 @@
 _shell_installer_remove() {
 	local cur="${COMP_WORDS[COMP_CWORD]}"
 
-	local -a dirs
+	local -a dirs=()
 	for dir in "${XDG_DATA_HOME:-$HOME/.local/share}/bash-installer/dls"/*; do
 		dir="$(basename "$dir")"
-		dirs+=${dir/--//}
+		dirs+=("${dir/--//}")
 	done
 
 	# shellcheck disable=SC2207
-	COMPREPLY=($(compgen -W "${dirs[*]}" -- "$cur"))
+	COMPREPLY=($(IFS=' ' compgen -W "${dirs[*]}" -- "$cur"))
 }
 
 _shell_installer_update() {
