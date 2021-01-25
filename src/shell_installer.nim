@@ -8,7 +8,8 @@ when not isMainModule:
   quit 1
 
 proc writeHelp() =
-  echo """Usage: shell_installer <subcommand> <argument>
+  echo """Usage: shell_installer <subcommand>
+
 Summary:
   Installs shell scripts, symlinking their primary executables to the PATH and completion scripts to a common folder
 
@@ -21,8 +22,7 @@ Subcommands:
 
 Examples:
   shell_installer list
-  shell_installer add eankeen/bm
-"""
+  shell_installer add eankeen/bm"""
 
 proc writeVersion() =
   echo "version"

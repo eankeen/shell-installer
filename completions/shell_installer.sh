@@ -6,7 +6,7 @@ _shell_installer_remove() {
 	local cur="${COMP_WORDS[COMP_CWORD]}"
 
 	local -a dirs=()
-	for dir in "${XDG_DATA_HOME:-$HOME/.local/share}/bash-installer/dls"/*; do
+	for dir in "${XDG_DATA_HOME:-$HOME/.local/share}/shell-installer/dls"/*; do
 		dir="$(basename "$dir")"
 		dirs+=("${dir/--//}")
 	done
