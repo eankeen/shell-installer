@@ -1,0 +1,2 @@
+[
+{"name":"tests/util.nim C","category":"pattern","target":"C","action":"run","result":"reSuccess","expected":"","given":"","machine":"woof","commit":"acf6b2eeb19","branch":"main"}]

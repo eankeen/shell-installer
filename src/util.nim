@@ -11,7 +11,7 @@ proc decodeAuthorRepo*(arr: array[2, string]): string =
 # "eankeen--bm" --> [eankeen, bm]
 proc encodeAuthorRepo*(authorRepo: string): array[2, string] =
   if authorRepo.count("--") != 1:
-    raise newException(CatchableError, "Could not deconstruct folder to an author or repo. Does not have a double hyphen")
+    raise newException(CatchableError, "Could not deconstruct folder to an author or repo. Does not have a double hyphen or has more than one")
 
   let author = authorRepo.split("--")[0]
   let repo = authorRepo.split("--")[1]
@@ -39,6 +39,9 @@ proc getDirNum(dir: string): int =
   return i
 
 proc xdgDataDir*(): string =
+  if getEnv("SHELL_INSTALLER_HOME") != "":
+    return getEnv("SHELL_INSTALLER_HOME")
+
   var dir = joinPath(getHomeDir(), ".config")
   if getEnv("XDG_DATA_HOME") != "":
     dir = getEnv("XDG_DATA_HOME")
