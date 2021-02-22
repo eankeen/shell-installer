@@ -27,6 +27,16 @@ proc plumbingReshim*() =
         removeFile(dest)
       createSymlink(mainFile, dest)
 
+    # projectDir symlink to bin (ex. fix nitefood/asm)
+    let mainShLessFile = joinPath(fullProjectDir, ar[1])
+    if fileExists(mainShLessFile):
+       echo mainShLessFile
+       createDir(joinPath(dataDir, "bin"))
+       let dest = joinPath(dataDir, "bin", ar[1])
+       if fileExists(dest):
+          removeFile(dest)
+       createSymlink(mainShLessFile, dest)
+
     # generic
     var mans = @["0", "1", "2", "3", "4", "5", "6", "7", "8"]
     mans.apply(proc(i: string): string = joinPath("man, man" & i))
