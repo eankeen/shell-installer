@@ -16,7 +16,7 @@ proc doList*() =
       options = { poStdErrToStdOut },
       workingDir = path
     )
-    version = result.output
+    version = result.output.strip()
 
     # if no git tag, output hash
     if result.output == "":
