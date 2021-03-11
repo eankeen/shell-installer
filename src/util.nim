@@ -42,7 +42,7 @@ proc xdgDataDir*(): string =
   if getEnv("SHELL_INSTALLER_HOME") != "":
     return getEnv("SHELL_INSTALLER_HOME")
 
-  var dir = joinPath(getHomeDir(), ".config")
+  var dir = joinPath(getHomeDir(), ".local", "share")
   if getEnv("XDG_DATA_HOME") != "":
     dir = getEnv("XDG_DATA_HOME")
 
