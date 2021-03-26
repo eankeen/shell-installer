@@ -28,6 +28,7 @@ proc writeVersion() =
   echo "version"
 
 if paramCount() < 1:
+  writeHelp()
   quit("Error: Expected subcommand. Exiting", errorcode = QuitFailure)
 
 var p = initOptParser(commandLineParams())
