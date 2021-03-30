@@ -17,7 +17,8 @@ Subcommands:
   list
   add <author/repo>
   remove <author/repo>
-  update
+  reset <author/repo>
+  update <author/repo>
   reshim
 
 Examples:
@@ -62,6 +63,12 @@ for kind, key, val in p.getopt():
         quit("Error: Repository not passed as param. Exiting", QuitFailure)
 
       doRemove(paramStr(2))
+      quit QuitSuccess
+    of "reset":
+      if paramCount() < 2:
+        quit("Error: Repository not passed as param. Exiting", QuitFailure)
+
+      doReset(paramStr(2))
       quit QuitSuccess
     of "update":
       if paramCount() < 2:

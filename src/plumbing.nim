@@ -30,7 +30,6 @@ proc plumbingReshim*() =
     # projectDir symlink to bin (ex. fix nitefood/asm)
     let mainShLessFile = joinPath(fullProjectDir, ar[1])
     if fileExists(mainShLessFile):
-       echo mainShLessFile
        createDir(joinPath(dataDir, "bin"))
        let dest = joinPath(dataDir, "bin", ar[1])
        if fileExists(dest):
@@ -75,4 +74,4 @@ proc plumbingReshim*() =
         removeFile(dest)
       createSymlink(file, dest)
 
-  echo "Reshim Done."
+  echo "shell-installer: Reshim Done."
